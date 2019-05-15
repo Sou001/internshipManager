@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" media="all"  href="http://localhost:8080/internshipManager/public/css/mystyle.css" />
 </head>
 <body>
-<form action="login" method="post">
+    <div class="form other">
+        <form action="login" method="post">
     <table style="with: 50%">
         <tr>
             <td>Email</td>
@@ -17,5 +19,7 @@
     </table>
     <input type="submit" value="Login" />
 </form>
+    </div>
+
 </body>
 </html>

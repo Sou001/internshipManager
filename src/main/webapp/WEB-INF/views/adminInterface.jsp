@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <title>Accueil</title>
-  <link rel="stylesheet" type="text/css" media="all"  href="/public/css/mystyle.css" />
+  <link rel="stylesheet" type="text/css" media="all"  href="http://localhost:8080/internshipManager/public/css/mystyle.css" />
 </head>
 <body>
   <header>
