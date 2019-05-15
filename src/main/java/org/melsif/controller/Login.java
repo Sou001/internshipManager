@@ -21,15 +21,11 @@ public class Login extends HttpServlet {
         LoginService loginService = new LoginService();
         boolean result = loginService.authenticateUser(email, password);
         if (!result) {
-            response.sendRedirect("error");
+            response.sendRedirect("home");
         } else {
             User user = loginService.getUserByEmail(email);
-            System.out.println(user.getClass());
-            System.out.println(user);
             request.getSession().setAttribute("user", user.getAccount().getName());
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminInterface.jsp").forward(request,response);
-            response.sendRedirect("adminInterface");
-            
         }
     }
 }

@@ -84,6 +84,6 @@
               <version>2.0</version>
           </plugin>
           </plugins>
-    </build>
+  </build>
 
 </project>

@@ -22,6 +22,7 @@ public class AdminInterface extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        
     }
 
 }

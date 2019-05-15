@@ -14,33 +14,26 @@
 </head>
 <body>
   <header>
-    <h1>Bienvenue à votre compte</h1>
+    <h1>Bienvenue <%= request.getSession().getAttribute("user") %> à votre compte </h1>
   </header>
   <main>
     <article>
-    <div class = "form">
-      		<h1 style="text-align : center"> Informations personnelles </h1>
-      		<h1> <%= request.getAttribute("user") %></h1>
-      		<h3>V</h3>
-      		<h3>V</h3>
-      	</div>
       	
       	
       <div class="form other">
-      	<h2 style="text-align : center"> Options</h2>
-    	<form method="GET" >
-          	<input type="hidden" name="action" value="messagerie">
+    	<form action = "questionnaire" method="post" >
+          	<input type="hidden" name="action" value="questionnaire">
           	<button>Gestion des questionnaires</button>
         </form>
-        <form method="GET">
-          	<input type="hidden" name="action" value="virement">
+        <form action = "comptes" method="post">
+          	<input type="hidden" name="action" value="comptes">
           	<button>Gestion des comptes</button>
         </form>
-        <form method="GET" >
-          	<input type="hidden" name="action" value="clients">
+        <form action = "profile" method="post" >
+          	<input type="hidden" name="action" value="profile">
           	<button>Profile</button>
         </form>
-        <form method="GET" >
+        <form action = "disconnect" method="post" >
           	<input type="hidden" name="action" value="disconnect">
           	<button>Déconnexion</button>
         </form>

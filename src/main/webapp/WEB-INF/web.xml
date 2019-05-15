@@ -29,6 +29,15 @@
         <servlet-name>adminInterface</servlet-name>
         <url-pattern>/adminInterface</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>disconnect</servlet-name>
+        <servlet-class>org.melsif.controller.Disconnect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>disconnect</servlet-name>
+        <url-pattern>/disconnect</url-pattern>
+    </servlet-mapping>
     
     
     <servlet>
