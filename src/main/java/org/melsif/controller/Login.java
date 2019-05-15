@@ -15,7 +15,7 @@ public class Login extends HttpServlet {
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         final String email = request.getParameter("email");
         final String password = request.getParameter("password");
         LoginService loginService = new LoginService();
@@ -24,8 +24,12 @@ public class Login extends HttpServlet {
             response.sendRedirect("error");
         } else {
             User user = loginService.getUserByEmail(email);
-            request.getSession().setAttribute("user", user);
-            response.sendRedirect("home");
+            System.out.println(user.getClass());
+            System.out.println(user);
+            request.getSession().setAttribute("user", user.getAccount().getName());
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminInterface.jsp").forward(request,response);
+            response.sendRedirect("adminInterface");
+            
         }
     }
 }
