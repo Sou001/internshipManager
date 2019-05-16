@@ -1,18 +1,18 @@
 package org.melsif.dao;
 
-import org.melsif.model.Survey;
+import org.melsif.model.OrderQuestion;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class SurveyDao {
+public class OrderQuestionDao {
 
-    private static SurveyDao instance;
+    private static OrderQuestionDao instance;
     private EntityManager entityManager;
 
-    private SurveyDao() {
+    private OrderQuestionDao() {
         entityManager = getEntityManager();
     }
 
@@ -24,25 +24,25 @@ public class SurveyDao {
         return entityManager;
     }
 
-    public static SurveyDao getInstance() {
+    public static OrderQuestionDao getInstance() {
         if (instance == null) {
-            instance = new SurveyDao();
+            instance = new OrderQuestionDao();
         }
         return instance;
     }
 
-    public Survey getById(Integer id) {
-        return entityManager.find(Survey.class, id);
+    public OrderQuestion getById(Integer id) {
+        return entityManager.find(OrderQuestion.class, id);
     }
 
-    public List<Survey> findAll() {
-        return entityManager.createQuery("FROM " + Survey.class.getName()).getResultList();
+    public List<OrderQuestion> findAll() {
+        return entityManager.createQuery("FROM " + OrderQuestion.class.getName()).getResultList();
     }
 
-    public void persist(Survey survey) {
+    public void persist(OrderQuestion order) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(survey);
+            entityManager.persist(order);
             entityManager.getTransaction().commit();
         } catch (Exception ex)
         {
@@ -51,10 +51,10 @@ public class SurveyDao {
         }
     }
 
-    public void merge(Survey survey) {
+    public void merge(OrderQuestion order) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.merge(survey);
+            entityManager.merge(order);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -62,11 +62,11 @@ public class SurveyDao {
         }
     }
 
-    public void remove(Survey survey) {
+    public void remove(OrderQuestion order) {
         try {
             entityManager.getTransaction().begin();
-            survey = entityManager.find(Survey.class, survey.getId());
-            entityManager.remove(survey);
+            order = entityManager.find(OrderQuestion.class, order.getId());
+            entityManager.remove(order);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
             ex.printStackTrace(); entityManager.getTransaction().rollback();
@@ -75,10 +75,9 @@ public class SurveyDao {
 
     public void removeById(Integer id) {
         try {
-            Survey survey = getById(id);
-            remove(survey);
+            OrderQuestion order = getById(id);
+            remove(order);
         } catch (Exception ex) {
-            System.out.println("here");
             ex.printStackTrace();
         }
     }

@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
-import javax.persistence.Id;
 import lombok.Data;
 
 @Data
 @Entity
-public class Survey {
+public class Question {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,12 +16,8 @@ public class Survey {
     
     private Boolean isActive;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "skill")
-    private Skill skill;
-    
     @OneToMany(
-        mappedBy = "survey",
+        mappedBy = "question",
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
