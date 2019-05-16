@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class LoginController extends HttpServlet {
 
@@ -35,6 +36,7 @@ public class LoginController extends HttpServlet {
             } else {
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
             }
+
         }
     }
 }

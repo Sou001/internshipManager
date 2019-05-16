@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC >
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
+    <link rel="shortcut icon" href="">
     <link rel="stylesheet" type = "text/css" href="http://localhost:8080/internshipManager/public/css/mystyle.css">
 </head>
     <body>
         <header>
-            <h1><img src="http://localhost:8080/internshipManager/public/images/internships.png">
             <h2> Connexion </h2>
             </h1>
                 </header>
@@ -24,10 +25,15 @@
     </table> 
             <div class = "login" >
                 <input type="submit" value="Login" />  
-                <p class="create">Pas inscrit? <a href="#">Creer un compte</a></p>
-        
+               
             </div>
-</form>
+       </form>
+     
+           <form class = "newUser" action = "newUser" method="get" >
+                     Déjà inscrit ?
+          	<input type="hidden" name="action" value="newUser">
+          	<button class = "newUser">Créer un nouveau compte</button>
+                </form>
     </div>
 
 

@@ -1,21 +1,18 @@
-<%-- 
-    Document   : admin
-    Created on : 15 mai 2019, 22:58:44
-    Author     : air
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <title>Accueil</title>
+  <link rel="shortcut icon" href="">
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 
 </head>
+<<<<<<< Updated upstream:src/main/webapp/WEB-INF/views/admin.jsp
 <body style="background-color: grey">
   <header>
     <!h1Bienvenue = request.getSession().getAttribute("user") %à votre compte : </h1>
+
   </header>
    
   <main>
@@ -35,8 +32,8 @@
           	<input type="hidden" name="action" value="comptes">
           	<button>Gestion des comptes</button>
         </form>
-        <form action = "profile" method="post" >
-          	<input type="hidden" name="action" value="profile">
+        <form action = "profil" method="post" >
+          	<input type="hidden" name="action" value="profil">
           	<button>Profil</button>
         </form>
         <form action = "disconnect" method="post" >

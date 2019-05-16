@@ -47,6 +47,15 @@
         <servlet-name>users</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>profil</servlet-name>
+        <servlet-class>org.melsif.controller.Profil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>profil</servlet-name>
+        <url-pattern>/profil</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>disconnect</servlet-name>

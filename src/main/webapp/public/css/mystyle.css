@@ -4,7 +4,7 @@
 h1
 {
     top:0;
-    color:white;
+    color:#009999;
     text-align: center;
 }
 h2
@@ -12,7 +12,7 @@ h2
     text-align: center;
     font-size: 45px;
     font-style:italic;
-    color: #ace600;
+    color: #009999;
     margin-top:0px;
     margin-bottom:0px;
 }
@@ -77,6 +77,20 @@ input[type=submit]:hover {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+}
+.form newUser {
+    top:10px;
+}
+
+.button .newUser{
+    margin-left:90px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #009999;
+    color: white;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
 }
 .login .create {
   color: #001a1a;
