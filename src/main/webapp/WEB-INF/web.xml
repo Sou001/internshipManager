@@ -15,14 +15,11 @@
     </listener>
     <!--Index Servlet-->
     <servlet-mapping>
-        <servlet-name>default</servlet-name>>
-        <url-pattern>*.css</url-pattern>>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.js</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>>
-        <url-pattern>*.js</url-pattern>>
-    </servlet-mapping>
-    
+        
     <servlet>
         <servlet-name>home</servlet-name>
         <servlet-class>org.melsif.controller.Home</servlet-class>

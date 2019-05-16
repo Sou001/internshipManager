@@ -1,66 +1,101 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.login-page {
-  width: 360px;
-  padding: 30px 0 0;
-  margin: auto;
+
+h1
+{
+    top:0;
+    color:white;
+    text-align: center;
 }
-
-
+h2
+{
+    text-align: center;
+    font-size: 45px;
+    font-style:italic;
+    color: #ace600;
+    margin-top:0px;
+    margin-bottom:0px;
+}
 .form {
   display: inline-block;
   width : 360px;
-  height : 300px;
+  margin:auto;
+  border-style:solid;
+  border-color:#006666;
+  height : 250px;
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background-color: #ffffff;
   text-align: -webkit-left;
-  margin: 0 auto 50px;
-  padding: 50px 25px 25px 25px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  
+  padding: 50px 20px 45px 20px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); 
 }
 
 .other {
-  	left: 100px;
-	bottom: 200px;
-	top :86px;
+  	left: 15px;
+	bottom: 150px;
+	top : 30px;
 }
 
-
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+input[type=text], input[type=password] {
+    width: 100%;
+    background: #e6ffff;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=submit]
+{
+    width:100%;
+    padding: 10px 20px;
+    background-color: #009999;
+    color: white;
+    font-size:13px;
+    border: none;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #00b3b3;
+    border: 1px solid #006666 ;
+}
+.login {
+    padding : 55px 90px 50px 90px;
 }
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #aaa;
+  background:#009999 ;
+  padding:20px 40px 18px 50px;
   width: 100%;
   border: 0;
-  padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+.login .create {
+  color: #001a1a;
+  font-size:11.5px;
+}
+.login .create a {
+  color:#009999 ;
+  text-decoration: none;
 }
 
+.form button:hover,.form button:active,.form button:focus {
+  background: white;
+  color: #009999;
+  border: 1px solid #006666 ;
+  
+}
 .form form {
   margin-bottom: 5px;
 }
-
 .liste {
   background: #FFFFFF;
   padding-left: 25%;
@@ -72,7 +107,6 @@
   border-collapse: collapse;
   max-width: 50%;
 }
-
 .liste td {
   text-align: left;
   font-weight: bold;
@@ -81,13 +115,11 @@
   border-color: #aaa;
   border-width: thin;
 }
-
 .errmsg {
     font-weight: bold;
     font-size: 0.9em;
     color: red;
 }
-
 body {
   background: #eee; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #eee, #eee);

@@ -10,15 +10,15 @@
 <head>
   <meta charset="utf-8">
   <title>Accueil</title>
-  <link rel="stylesheet" type="text/css" media="all"  href="http://localhost:8080/internshipManager/public/css/mystyle.css" />
+  <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 </head>
-<body>
+<body style="background-image: url('http://localhost:8080/internshipManager/public/images/ADM.jpg');background-repeat:no-repeat;background-size:cover">
   <header>
-    <h1>Bienvenue <%= request.getSession().getAttribute("user") %> à votre compte </h1>
+    <h1>Bienvenue <%= request.getSession().getAttribute("user") %>à votre compte : </h1>
   </header>
+   
   <main>
     <article>
-      	
       	
       <div class="form other">
     	<form action = "questionnaire" method="post" >
@@ -31,7 +31,7 @@
         </form>
         <form action = "profile" method="post" >
           	<input type="hidden" name="action" value="profile">
-          	<button>Profile</button>
+          	<button>Profil</button>
         </form>
         <form action = "disconnect" method="post" >
           	<input type="hidden" name="action" value="disconnect">
@@ -39,10 +39,8 @@
         </form>
         
       	</div>
-      	
-      	
-      	
-    </article>
+        
+ </article>
   </main>
 </body>
 </html>
