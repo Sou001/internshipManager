@@ -21,5 +21,17 @@ public class Question {
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<OrderQuestion> order = new ArrayList<>();
+    private List<OrderQuestion> orderQ = new ArrayList<>();
+    
+    @OneToMany(
+        mappedBy = "question",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<OrderResponse> orderR = new ArrayList<>();
+    
+    @OneToOne
+    private Response good;
+    
+    
 }

@@ -27,4 +27,11 @@ public class Survey {
         orphanRemoval = true
     )
     private List<OrderQuestion> order = new ArrayList<>();
+    
+    @OneToMany(
+        mappedBy = "survey",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Record> record = new ArrayList<>();
 }
