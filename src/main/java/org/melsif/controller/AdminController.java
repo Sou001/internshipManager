@@ -5,6 +5,9 @@
  */
 package org.melsif.controller;
 
+import org.melsif.dao.UserDao;
+import org.melsif.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +18,13 @@ import java.io.IOException;
  *
  * @author air
  */
-public class AdminInterface extends HttpServlet {
+public class AdminController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminInterface.jsp").forward(request,response);
+        User user = (User) request.getSession().getAttribute("user");
+        user.setRole(User.Role.ADMINISTRATOR);
+        request.setAttribute("username", user.getAccount().getName());
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {

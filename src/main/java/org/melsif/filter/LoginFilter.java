@@ -1,5 +1,7 @@
 package org.melsif.filter;
 
+import org.melsif.model.User;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +9,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LoginFilter implements Filter {
+
+    private static String[] publicUrls = { "login" };
+
 
     public void destroy() {
     }
@@ -24,11 +29,20 @@ public class LoginFilter implements Filter {
         } else {
             response.sendRedirect(loginURI);
         }
+    }
+
+    @Override
+    public void init(FilterConfig config) throws ServletException {
 
     }
 
-    public void init(FilterConfig config) throws ServletException {
-
+    private boolean needsAuthentication(String url) {
+        for(String publicUrl : publicUrls) {
+            if (url.endsWith(publicUrl)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

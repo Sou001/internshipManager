@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <title>Accueil</title>
-  <link rel="stylesheet" type="text/css" media="all"  href="/public/css/mystyle.css" />
+  <link rel="stylesheet" type="text/css" href="public/css/mystyle.css" />
 </head>
 <body>
   <header>
@@ -20,9 +20,7 @@
     <article>
     <div class = "form">
       		<h1 style="text-align : center"> Informations personnelles </h1>
-      		<h1> <%= request.getAttribute("user") %></h1>
-      		<h3>V</h3>
-      		<h3>V</h3>
+      		<h1>${username}</h1>
       	</div>
       	
       	
