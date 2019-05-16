@@ -11,14 +11,20 @@
   <meta charset="utf-8">
   <title>Accueil</title>
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
+
 </head>
-<body style="background-image: url('http://localhost:8080/internshipManager/public/images/ADM.jpg');background-repeat:no-repeat;background-size:cover">
+<body style="background-color: grey">
   <header>
-    <h1>Bienvenue <%= request.getSession().getAttribute("user") %>à votre compte : </h1>
+    <!h1Bienvenue = request.getSession().getAttribute("user") %à votre compte : </h1>
   </header>
    
   <main>
     <article>
+
+    <div class = "form">
+      		<h1 style="text-align : center"> Informations personnelles </h1>
+      		<h1>${username}</h1>
+      	</div>
       	
       <div class="form other">
     	<form action = "questionnaire" method="post" >

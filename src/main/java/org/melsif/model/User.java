@@ -10,9 +10,15 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "user")
 public abstract class User {
 
+    public enum Role {
+        ADMINISTRATOR,
+        INTERN
+    }
     @Id
     private String email;
     private String password;
     @OneToOne
     private Account account;
+    private Role role;
 }
+
