@@ -28,6 +28,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("home");
         } else {
             User user = loginService.getUserByEmail(email);
+
             //request.getSession().setAttribute("user", user.getAccount().getName());
             //this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminInterface.jsp").forward(request,response);
             request.getSession().setAttribute("user", user);

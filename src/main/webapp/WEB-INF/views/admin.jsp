@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 
 </head>
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/views/admin.jsp
+
 <body style="background-color: grey">
   <header>
     <!h1Bienvenue = request.getSession().getAttribute("user") %à votre compte : </h1>
