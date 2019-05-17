@@ -13,33 +13,31 @@
                 </header>
     <div class="form other">
         <form action="login" method="post">
-    <table style="with: 50%">
-        <tr>
-            <td>Email :</td>
-            <td><input type="text" name="email" /></td>
-        </tr>
-        <tr>
-            <td>Password :</td>
-            <td><input type="password" name="password" /></td>
-        </tr>
-    </table> 
+            <table style="with: 50%">
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="text" name="email" /></td>
+                </tr>
+                <tr>
+                    <td>Password :</td>
+                    <td><input type="password" name="password" /></td>
+                </tr>
+            </table> 
             <div class = "login" >
                 <input type="submit" value="Login" />  
-               
             </div>
-            
-             
-       </form>
-        <form class = " newUser" action = "newUser" method="get" >
-                     
-                     <div class = "login" >
-                <input type="hidden" name="newUser" /> 
-                <button>Nouveau compte</button>
-            </div>
-                </form>
-         
+        </form>     
     </div>
-
+        
+    <form action = "newUser" method="get" >
+                <table style="with: 50%">
+                <tr>
+                    <td>S'inscrire ?</td>
+                    <td><input type="submit" name="newUser" value="Nouveau compte"/></td>
+                </tr>
+            </table>
+    </form>
+    
 
 </body>
 </html>

@@ -29,7 +29,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("home");
         } else {
             User user = loginService.getUserByEmail(email);
-
+            
             request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("name", user.getName());
             request.getSession().setAttribute("email", user.getEmail());
@@ -46,8 +46,6 @@ public class LoginController extends HttpServlet {
                 request.getSession().setAttribute("role", "INTERN");
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
             }
-            
-
         }
     }
 }

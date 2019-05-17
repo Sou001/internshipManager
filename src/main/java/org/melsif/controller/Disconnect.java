@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author air
  */
-@WebServlet(name = "Disconnect", urlPatterns = {"/Disconnect"})
+@WebServlet(name = "disconnect", urlPatterns = {"/disconnect"})
 
 public class Disconnect extends HttpServlet {
 

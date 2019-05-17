@@ -23,7 +23,7 @@ public class UsersController extends HttpServlet {
                  userService.mergeUser(user);
              }
          }
-         this.getServletContext().getRequestDispatcher("/WEB-INF/views/users.jsp").forward(request,response);
+         this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
