@@ -13,4 +13,8 @@ public class UserService {
     public void newUser(User user) {
         UserDao.getInstance().persist(user);
     }
+    
+    public void mergeUser(User user) {
+        UserDao.getInstance().merge(user);
+    }
 }

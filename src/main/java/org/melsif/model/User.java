@@ -20,7 +20,7 @@ public abstract class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-     private String name;
+    private String name;
     private String society;
     private String tel;
     private LocalDate creationDate;

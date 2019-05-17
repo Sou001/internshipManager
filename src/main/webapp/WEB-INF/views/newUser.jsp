@@ -11,7 +11,7 @@
             <h2> Connexion </h2>
             </h1>
                 </header>
-    <div class="form other">
+    <div class="form other create">
         <form action="newUser" method="post">
     <table style="with: 50%">
         <tr>

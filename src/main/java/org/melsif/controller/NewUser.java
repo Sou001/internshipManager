@@ -43,9 +43,11 @@ public class NewUser extends HttpServlet {
         if (Admin != null) {
             user = new Administrator();
             user.setIsActive(true);
+            user.setRole(User.Role.ADMINISTRATOR);
         } else {
             user = new Intern();
             user.setIsActive(false);
+            user.setRole(User.Role.INTERN);
         }
         
         

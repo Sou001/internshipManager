@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import org.melsif.service.UserService;
 
 public class LoginController extends HttpServlet {
 
@@ -29,15 +30,23 @@ public class LoginController extends HttpServlet {
         } else {
             User user = loginService.getUserByEmail(email);
 
-            //request.getSession().setAttribute("user", user.getAccount().getName());
-            //this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminInterface.jsp").forward(request,response);
             request.getSession().setAttribute("user", user);
             request.getSession().setAttribute("name", user.getName());
+            request.getSession().setAttribute("email", user.getEmail());
+            request.getSession().setAttribute("society", user.getSociety());
+            request.getSession().setAttribute("tel", user.getTel());
+            request.getSession().setAttribute("date", user.getCreationDate());
+            request.getSession().setAttribute("state", user.getIsActive());
+            
             if (user instanceof Administrator) {
+                request.getSession().setAttribute("role", "ADMINISTRATOR");
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
+                
             } else {
+                request.getSession().setAttribute("role", "INTERN");
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
             }
+            
 
         }
     }

@@ -15,10 +15,12 @@
 
 </head>
 <body>
+    <header>
+    <h1 style = "color : #009999">La liste des utilisateurs </h1>
+  </header>
     <title>Users</title>
-    <form class = "form other" action="users" method="post">
-        <table style="width: 100%">
-            <caption>Liste d'utilisateurs</caption>
+    <form class ="users" action="users" method="post">
+        <table class = "users" style="width: 100%">
             <thead>
                 <tr>
                     <th>email</th>
@@ -29,40 +31,24 @@
             </thead>
             <tbody>
                 <c:forEach items="${ users }" var="user">
-                    <c:if test = "${user.account.isActive == false}" var = "inverse"></c:if>
+                    <c:if test = "${user.isActive == false}" var = "inverse"></c:if>
                     <tr>
                         <td>${ user.email }</td>
-                        <td>${ user.account.name }</td>
+                        <td>${ user.name }</td>
                         <td>${ user.role }</td>
                         <td>
-                            <form name="doublecombo">
-                                <p align="center">
-                                <select name="example" size="1" onchange="ChanGeValue()">
-                                    <option value = "">${ user.account.isActive }</option>
-                                    <option value = "${user}">${ inverse }</option>
-                                </select>
-                                </p>
-                        <script>
-
-                        function ChanGeValue(){
-                        var sel = document.doublecombo.example;
-                        var opt = sel.options[sel.selectedIndex].value;
-                        request.getSession().setAttribute("User",opt);
-                        }
-                        </script>
-                        </form>
-                            
+                         <input type="radio" name="${user.name}"  checked/>${ user.isActive }
+                         <br><br>
+                         <input type="radio" name="${user.name}" />${ inverse}
                         </td>
                     </tr>
                 </c:forEach>
             
             </tbody>
         </table>
-        
-        <form action="users" method="POST">
-            <input type="submit" value="Valider" />
-       </form>
+        <input type="submit" name = "users" value = "Valider">
     </form>
+            
 
 </body>
 </html>

@@ -14,22 +14,37 @@
 </head>
 <body style="background-color:grey">
   <header>
-    <h1 style = "color : #009999">Votre profil </h1>
+    <h1 style = "color : #009999">Informations personnelles </h1>
   </header>
    
   <main>
-    <article>
-      	
-      <div class="form other">
-            <td>Name : <%= request.getSession().getAttribute("user") %></td>
-            <td>email : <%= request.getSession().getAttribute("email") %></td>
-            <td>society : <%= request.getSession().getAttribute("society") %></td>
-            <td>Tel : <%= request.getSession().getAttribute("tel") %></td>
-            <td>Date de création : <%= request.getSession().getAttribute("date") %></td>
-     
-      	</div>
-        
- </article>
+  <table class  = "users" style="width: 100%">
+            
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Société</th>
+                    <th>Coordonnées téléphoniques</th>
+                    <th>Date de création</th>
+                    <th>État du compte</th>
+                    <th>Fonction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                        <td><%= request.getSession().getAttribute("name") %></td>
+                        <td><%= request.getSession().getAttribute("email") %></td>
+                        <td><%= request.getSession().getAttribute("society") %></td>
+                        <td><%= request.getSession().getAttribute("tel") %></td>
+                        <td><%= request.getSession().getAttribute("date") %></td>
+                        <td><%= request.getSession().getAttribute("state") %></td>
+                        <td><%= request.getSession().getAttribute("role") %></td>
+                </tr>
+            
+            </tbody>
+</table>
+ 
   </main>
 </body>
 </html>

@@ -27,17 +27,19 @@
                 <input type="submit" value="Login" />  
                
             </div>
+            
+             
        </form>
-     
+        <form class = " newUser" action = "newUser" method="get" >
+                     
+                     <div class = "login" >
+                <input type="hidden" name="newUser" /> 
+                <button>Nouveau compte</button>
+            </div>
+                </form>
          
     </div>
 
- <form action = "newUser" method="get" >
-                     Déjà inscrit ?
-                     <div class = "login" >
-                <input type="submit" value="newUser" />  
-               
-            </div>
-                </form>
+
 </body>
 </html>
