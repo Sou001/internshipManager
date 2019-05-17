@@ -23,7 +23,7 @@ public class AdminController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         user.setRole(User.Role.ADMINISTRATOR);
-        request.setAttribute("username", user.getAccount().getName());
+        request.setAttribute("username", user.getName());
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
     }
 

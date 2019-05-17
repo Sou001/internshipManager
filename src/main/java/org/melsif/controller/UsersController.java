@@ -14,7 +14,8 @@ import java.util.List;
 public class UsersController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+         Object user = request.getSession().getAttribute("User");
+         System.out.println(user);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

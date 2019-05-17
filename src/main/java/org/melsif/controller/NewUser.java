@@ -6,13 +6,16 @@
 package org.melsif.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.melsif.model.User;
+import org.melsif.model.Administrator;
+import org.melsif.model.Intern;
+import org.melsif.service.UserService;
 
 /**
  *
@@ -27,12 +30,38 @@ public class NewUser extends HttpServlet {
     }
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserService userService = new UserService();
+        User user;
         final String email = request.getParameter("email");
         final String password = request.getParameter("password");
         final String society = request.getParameter("society");
         final String tel = request.getParameter("tel");
-        
-        
+        final String Admin = request.getParameter("Admin");
+        final String name = request.getParameter("name");
     
+        
+        if (Admin != null) {
+            user = new Administrator();
+            user.setIsActive(true);
+        } else {
+            user = new Intern();
+            user.setIsActive(false);
+        }
+        
+        
+        user.setSociety(society);
+        user.setTel(tel);
+        user.setName(name);
+        user.setCreationDate(LocalDate.now());
+        
+        
+        
+        
+        
+        user.setEmail(email);
+        user.setPassword(password);
+        userService.newUser(user);
+        
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
     }
 }

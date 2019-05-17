@@ -32,6 +32,7 @@ public class LoginController extends HttpServlet {
             //request.getSession().setAttribute("user", user.getAccount().getName());
             //this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminInterface.jsp").forward(request,response);
             request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("name", user.getName());
             if (user instanceof Administrator) {
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
             } else {

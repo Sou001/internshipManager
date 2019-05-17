@@ -1,5 +1,6 @@
 package org.melsif.model;
 
+import java.time.LocalDate;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,8 +18,12 @@ public abstract class User {
     @Id
     private String email;
     private String password;
-    @OneToOne
-    private Account account;
+    @Enumerated(EnumType.STRING)
     private Role role;
+     private String name;
+    private String society;
+    private String tel;
+    private LocalDate creationDate;
+    private Boolean isActive;
 }
 

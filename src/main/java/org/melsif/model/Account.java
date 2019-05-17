@@ -8,16 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Data
-@Entity
+
 public class Account {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private Integer id;
     private String name;
     private String society;
-    private Integer tel;
+    private String tel;
     private LocalDate creationDate;
     private Boolean isActive;
 }

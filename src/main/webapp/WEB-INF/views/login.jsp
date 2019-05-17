@@ -29,13 +29,15 @@
             </div>
        </form>
      
-           <form class = "newUser" action = "newUser" method="get" >
-                     Déjà inscrit ?
-          	<input type="hidden" name="action" value="newUser">
-          	<button class = "newUser">Créer un nouveau compte</button>
-                </form>
+         
     </div>
 
-
+ <form action = "newUser" method="get" >
+                     Déjà inscrit ?
+                     <div class = "login" >
+                <input type="submit" value="newUser" />  
+               
+            </div>
+                </form>
 </body>
 </html>

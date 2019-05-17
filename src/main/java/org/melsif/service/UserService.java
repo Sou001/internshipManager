@@ -9,4 +9,8 @@ public class UserService {
     public List<User> getAllUsers() {
         return UserDao.getInstance().findAll();
     }
+    
+    public void newUser(User user) {
+        UserDao.getInstance().persist(user);
+    }
 }

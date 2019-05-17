@@ -11,39 +11,27 @@
 
 <body style="background-color: grey">
   <header>
-    <!h1Bienvenue = request.getSession().getAttribute("user") %à votre compte : </h1>
+    <h1>Bienvenue <%= request.getSession().getAttribute("name") %> à votre compte </h1>
 
   </header>
-   
-  <main>
-    <article>
-
-    <div class = "form">
-      		<h1 style="text-align : center"> Informations personnelles </h1>
-      		<h1>${username}</h1>
-      	</div>
+  
       	
       <div class="form other">
-    	<form action = "questionnaire" method="post" >
-          	<input type="hidden" name="action" value="questionnaire">
-          	<button>Gestion des questionnaires</button>
-        </form>
-        <form action = "comptes" method="post">
-          	<input type="hidden" name="action" value="comptes">
+        <form action = "users" method="get">
+          	<input type="hidden" name="action" value="users">
           	<button>Gestion des comptes</button>
         </form>
-        <form action = "profil" method="post" >
+        <form action = "profil" method="get" >
           	<input type="hidden" name="action" value="profil">
           	<button>Profil</button>
         </form>
-        <form action = "disconnect" method="post" >
+        <form action = "disconnect" method="get" >
           	<input type="hidden" name="action" value="disconnect">
           	<button>Déconnexion</button>
         </form>
         
       	</div>
         
- </article>
-  </main>
+
 </body>
 </html>

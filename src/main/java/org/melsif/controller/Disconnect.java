@@ -23,10 +23,6 @@ import javax.servlet.http.HttpSession;
 public class Disconnect extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        
-    }
-    
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Récupération et destruction de la session en cours */
         HttpSession session = request.getSession();
         session.invalidate();
@@ -34,5 +30,9 @@ public class Disconnect extends HttpServlet {
         /* Redirection vers le Site du Zéro ! */
         
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
+    }
+    
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
     }
 }
