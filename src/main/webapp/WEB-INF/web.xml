@@ -67,6 +67,16 @@
         <url-pattern>/newUser</url-pattern>
     </servlet-mapping>
     
+    
+    <servlet>
+        <servlet-name>survey</servlet-name>
+        <servlet-class>org.melsif.controller.SurveyController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>survey</servlet-name>
+        <url-pattern>/survey</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>disconnect</servlet-name>
         <servlet-class>org.melsif.controller.Disconnect</servlet-class>

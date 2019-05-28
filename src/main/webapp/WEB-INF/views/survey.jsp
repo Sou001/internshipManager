@@ -19,36 +19,37 @@
     <h1 style = "color : #009999">La liste des utilisateurs </h1>
   </header>
     <title>Users</title>
-    <form class ="users" action="users" method="post">
+    <form class ="users" action="survey" method="post">
         <table class = "users" style="width: 100%">
             <thead>
                 <tr>
-                    <th>email</th>
-                    <th>name</th>
-                    <th>role</th>
+                    <th>Numéro</th>
+                    <th>Compétence</th>
                     <th>active</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${ users }" var="user">
-                    <c:if test = "${user.isActive == false}" var = "inverse"></c:if>
+                <c:forEach items="${ surveys }" var="survey">
+                    <c:if test = "${survey.isActive == false}" var = "inverse"></c:if>
                     <tr>
-                        <td>${ user.email }</td>
-                        <td>${ user.name }</td>
-                        <td>${ user.role }</td>
+                        <td>${ survey.id }</td>
+                        <td>${ survey.skill.subject }</td>
                         <td>
-                         <input type="radio" name="${user.email}"  value=${ user.isActive } checked/>${ user.isActive }
+                         <input type="radio" name=${survey.id}  value= ${survey.isActive} checked/>${survey.isActive}
                          <br><br>
-                         <input type="radio" name="${user.email}" value =${ inverse} />${ inverse}
+                         <input type="radio" name=${survey.id} value= ${inverse} />${inverse}
                         </td>
                     </tr>
                 </c:forEach>
             
             </tbody>
         </table>
-        <input type="submit" name = "users" value = "Valider">
+        <input type="submit" name = "survey" value = "Valider">
+        
     </form>
-            
+    <form action = "newSurvey" method = "get">
+    <input type="submit" name = "newSurvey" value = "Nouveau Questionnaire">
+    </form>
 
 </body>
 </html>

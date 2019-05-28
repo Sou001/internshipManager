@@ -21,9 +21,18 @@
           	<input type="hidden" name="action" value="users">
           	<button>Gestion des comptes</button>
         </form>
+          
+        <form action = "survey" method="get">
+          	<input type="hidden" name="action" value="survey">
+          	<button>Gestion des questionnaires</button>
+        </form>
         <form action = "profil" method="get" >
           	<input type="hidden" name="action" value="profil">
           	<button>Profil</button>
+        </form>
+        <form action = "newUser" method="get" >
+          	<input type="hidden" name="action" value="newUser">
+          	<button>Nouveau utilisateur</button>
         </form>
         <form action = "disconnect" method="get" >
           	<input type="hidden" name="action" value="disconnect">

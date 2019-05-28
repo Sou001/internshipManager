@@ -74,6 +74,7 @@ h2
   	left: 15px;
 	bottom: 150px;
 	top : 30px;
+        height:100%;
 }
 
 .create {
@@ -91,7 +92,7 @@ input[type=text], input[type=password] {
 }
 input[type=submit]
 {
-    width:100%;
+    width:14%;
     padding: 10px 20px;
     background-color: #009999;
     color: white;

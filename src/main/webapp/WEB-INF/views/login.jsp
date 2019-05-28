@@ -4,7 +4,7 @@
 <head>
     <title>Login</title>
     <link rel="shortcut icon" href="">
-    <link rel="stylesheet" type = "text/css" href="http://localhost:8080/internshipManager/public/css/mystyle.css">
+    <link rel="stylesheet" type = "text/css" href="public/css/mystyle.css">
 </head>
     <body>
         <header>
@@ -28,16 +28,5 @@
             </div>
         </form>     
     </div>
-        
-    <form action = "newUser" method="get" >
-                <table style="with: 50%">
-                <tr>
-                    <td>S'inscrire ?</td>
-                    <td><input type="submit" name="newUser" value="Nouveau compte"/></td>
-                </tr>
-            </table>
-    </form>
-    
-
 </body>
 </html>

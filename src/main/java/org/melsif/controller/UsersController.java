@@ -16,9 +16,9 @@ public class UsersController extends HttpServlet {
     List<User> users = userService.getAllUsers();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          for (User user : users) {
-             String active = (String) request.getSession().getAttribute(user.getName());
-             String isActive = user.getIsActive() ? "True" : "False";
-             if (active != isActive ) {
+             String active = request.getParameter(user.getEmail());
+             String isActive = user.getIsActive().toString();
+             if (!active.equals(isActive) ) {
                  user.setIsActive(!user.getIsActive());
                  userService.mergeUser(user);
              }
