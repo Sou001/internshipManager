@@ -16,15 +16,18 @@
 </head>
 <body>
     <header>
-    <h1 style = "color : #009999">La liste des utilisateurs </h1>
+    <h1 style = "color : #009999">La liste des questionnaires </h1>
+    <h2>Afin d'activer ou désactiver un questionnaire il faut utiliser le bouton valider à la fin de votre opértation</h2>
   </header>
     <title>Users</title>
     <form class ="users" action="survey" method="post">
+        <c:if test = "${!empty surveys}" >
         <table class = "users" style="width: 100%">
             <thead>
                 <tr>
                     <th>Numéro</th>
-                    <th>Compétence</th>
+                    <th>Titre</th>
+                    <th>Compétence associée</th>
                     <th>active</th>
                 </tr>
             </thead>
@@ -33,6 +36,7 @@
                     <c:if test = "${survey.isActive == false}" var = "inverse"></c:if>
                     <tr>
                         <td>${ survey.id }</td>
+                        <td>${ survey.title }</td>
                         <td>${ survey.skill.subject }</td>
                         <td>
                          <input type="radio" name=${survey.id}  value= ${survey.isActive} checked/>${survey.isActive}
@@ -44,11 +48,14 @@
             
             </tbody>
         </table>
-        <input type="submit" name = "survey" value = "Valider">
-        
+        <input class = "admin" type="submit" name = "survey" value = "Valider">
+        </c:if>
+        <c:if test = "${empty surveys}" >
+            <p> Il n'y a pas de questionnaires d'enregistrer ! </p>
+        </c:if>
     </form>
     <form action = "newSurvey" method = "get">
-    <input type="submit" name = "newSurvey" value = "Nouveau Questionnaire">
+    <input class = "admin" type="submit" name = "newSurvey" value = "Nouveau Questionnaire">
     </form>
 
 </body>

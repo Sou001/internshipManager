@@ -15,6 +15,7 @@ public class Question {
     private Integer id;
     
     private Boolean isActive;
+    private String title;
     
     @OneToMany(
         mappedBy = "question",

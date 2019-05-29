@@ -92,13 +92,16 @@ input[type=text], input[type=password] {
 }
 input[type=submit]
 {
-    width:14%;
+    width:100%;
     padding: 10px 20px;
     background-color: #009999;
     color: white;
     font-size:13px;
     border: none;
     cursor: pointer;
+}
+input[class=admin] {
+    width:14%;
 }
 input[type=submit]:hover {
     background-color: white;

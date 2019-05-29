@@ -13,7 +13,7 @@
     <listener>
         <listener-class>org.melsif.listner.Listener</listener-class>
     </listener>
-
+    
     <!--Index Servlet-->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
@@ -56,6 +56,15 @@
     <servlet-mapping>
         <servlet-name>profil</servlet-name>
         <url-pattern>/profil</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>org.melsif.controller.AdminController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     
     <servlet>
