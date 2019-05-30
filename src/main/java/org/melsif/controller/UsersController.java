@@ -12,10 +12,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class UsersController extends HttpServlet {
-    UserService userService = new UserService();
-    List<User> users = userService.getAllUsers();
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         for (User user : users) {
+        UserService userService = new UserService();
+        List<User> users = userService.getAllUsers(); 
+        
+        for (User user : users) {
              String active = request.getParameter(user.getEmail());
              String isActive = user.getIsActive().toString();
              if (!active.equals(isActive) ) {
@@ -27,7 +29,8 @@ public class UsersController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        UserService userService = new UserService();
+        List<User> users = userService.getAllUsers();
         request.setAttribute("users", users);
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/users.jsp").forward(request,response);
     }

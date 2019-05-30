@@ -10,7 +10,8 @@ import lombok.Data;
 public class Response {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     private String content;
     private Boolean isActive;

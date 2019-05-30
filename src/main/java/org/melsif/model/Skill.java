@@ -14,7 +14,8 @@ public class Skill {
     
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     
     @Column(unique = true)

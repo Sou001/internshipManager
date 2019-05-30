@@ -11,7 +11,8 @@ import lombok.Data;
 public class Question {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     
     private Boolean isActive;

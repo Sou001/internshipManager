@@ -21,8 +21,6 @@ import org.melsif.service.SurveyService;
  * @author air
  */
 public class SurveyController extends HttpServlet {
-    SurveyService surveyService = new SurveyService();
-    List<Survey> surveys = surveyService.getAllSurveys();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -36,7 +34,8 @@ public class SurveyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        SurveyService surveyService = new SurveyService();
+        List<Survey> surveys = surveyService.getAllSurveys();
         request.setAttribute("surveys", surveys);
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/survey.jsp").forward(request,response);
     }
@@ -52,6 +51,8 @@ public class SurveyController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SurveyService surveyService = new SurveyService();
+        List<Survey> surveys = surveyService.getAllSurveys();
         for (Survey survey : surveys) {
              String active = request.getParameter(""+survey.getId()+"");
              String isActive = survey.getIsActive().toString();
@@ -62,5 +63,5 @@ public class SurveyController extends HttpServlet {
          }
          this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
     }
-
+    
 }

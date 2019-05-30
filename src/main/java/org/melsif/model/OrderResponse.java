@@ -13,7 +13,7 @@ import lombok.Data;
 public class OrderResponse {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)

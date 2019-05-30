@@ -41,6 +41,7 @@ public class OrderQuestionDao {
 
     public void persist(OrderQuestion order) {
         try {
+            System.out.println("here");
             entityManager.getTransaction().begin();
             entityManager.persist(order);
             entityManager.getTransaction().commit();

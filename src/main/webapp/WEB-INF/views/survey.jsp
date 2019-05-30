@@ -9,7 +9,8 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>Accueil</title>
+  <meta http-equiv="pragma" content="no-cache" />
+  <title>Surveys list</title>
   <link rel="shortcut icon" href="">
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 
@@ -17,9 +18,8 @@
 <body>
     <header>
     <h1 style = "color : #009999">La liste des questionnaires </h1>
-    <h2>Afin d'activer ou désactiver un questionnaire il faut utiliser le bouton valider à la fin de votre opértation</h2>
+    <h4 style = "color : black; text-align:left;"> Afin d'activer ou désactiver un questionnaire il faut utiliser le bouton valider à la fin de votre opértation.</h4>
   </header>
-    <title>Users</title>
     <form class ="users" action="survey" method="post">
         <c:if test = "${!empty surveys}" >
         <table class = "users" style="width: 100%">
@@ -43,6 +43,9 @@
                          <br><br>
                          <input type="radio" name=${survey.id} value= ${inverse} />${inverse}
                         </td>
+                        <td>
+                            <input type="submit" name = "modifySurvey" value = "Modifier">
+                        </td>
                     </tr>
                 </c:forEach>
             
@@ -54,8 +57,25 @@
             <p> Il n'y a pas de questionnaires d'enregistrer ! </p>
         </c:if>
     </form>
+    
     <form action = "newSurvey" method = "get">
-    <input class = "admin" type="submit" name = "newSurvey" value = "Nouveau Questionnaire">
+        <table>
+            <caption>Vous voulez avoir un nouveau questionnaire dans la liste ? Créez-un !</caption>
+            <tr>
+                    <td>Nombre de questions</td>
+                    <td>
+                        <input type="number" min = "0" step="1" name="question">
+                    </td>
+            </tr>
+                <tr>
+                    <td>Nombre de réponses par question</td>
+                    <td>
+                        <input type="number" min = "0" step="1" name="response">
+                    </td>
+                </tr>
+        </table>
+        <input type="hidden" name="action" value="newSurvey">
+        <button class = "survey">Nouveau Questionnaire</button>
     </form>
 
 </body>

@@ -9,6 +9,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache" />
   <title>Accueil</title>
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 </head>

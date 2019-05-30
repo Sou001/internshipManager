@@ -87,6 +87,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>newSurvey</servlet-name>
+        <servlet-class>org.melsif.controller.NewSurvey</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newSurvey</servlet-name>
+        <url-pattern>/newSurvey</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>disconnect</servlet-name>
         <servlet-class>org.melsif.controller.Disconnect</servlet-class>
     </servlet>

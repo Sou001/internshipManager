@@ -14,7 +14,8 @@ import lombok.Data;
 public class Record {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)

@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
     <title>Login</title>
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" type = "text/css" href="public/css/mystyle.css">

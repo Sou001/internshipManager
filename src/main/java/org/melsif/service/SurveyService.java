@@ -21,4 +21,8 @@ public class SurveyService {
     public void mergeSurvey(Survey survey) {
         SurveyDao.getInstance().merge(survey);
     }
+    
+    public void newSurvey(Survey survey) {
+        SurveyDao.getInstance().persist(survey);
+    }
 }

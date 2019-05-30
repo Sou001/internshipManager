@@ -7,6 +7,7 @@ package org.melsif.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,6 @@ import org.melsif.service.UserService;
  *
  * @author air
  */
-@WebServlet(name = "newUser", urlPatterns = {"/newUser"})
 
 public class NewUser extends HttpServlet {
 
@@ -36,11 +36,11 @@ public class NewUser extends HttpServlet {
         final String password = request.getParameter("password");
         final String society = request.getParameter("society");
         final String tel = request.getParameter("tel");
-        final String Admin = request.getParameter("Admin");
+        final String role = request.getParameter("role");
         final String name = request.getParameter("name");
     
         
-        if (Admin != null) {
+        if (role.equals("Admin")) {
             user = new Administrator();
             user.setIsActive(true);
             user.setRole(User.Role.ADMINISTRATOR);
@@ -64,6 +64,7 @@ public class NewUser extends HttpServlet {
         user.setPassword(password);
         userService.newUser(user);
         
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
+        
+        request.getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request, response);  
     }
 }

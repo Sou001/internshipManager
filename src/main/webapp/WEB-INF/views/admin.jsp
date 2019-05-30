@@ -3,6 +3,9 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0, no-cache="set-cookie" />
+    
   <title>Accueil</title>
   <link rel="shortcut icon" href="">
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>

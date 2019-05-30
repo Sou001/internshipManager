@@ -77,8 +77,16 @@ h2
         height:100%;
 }
 
+.full {
+    width:50%;
+}
 .create {
     height :100%;
+}
+
+.survey {
+    margin-left: -900px;
+    
 }
 
 input[type=text], input[type=password] {
@@ -102,6 +110,7 @@ input[type=submit]
 }
 input[class=admin] {
     width:14%;
+    margin-top:35px;
 }
 input[type=submit]:hover {
     background-color: white;
@@ -204,3 +213,5 @@ body {
   text-align: center;
 }
 
+
+}

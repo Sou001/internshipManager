@@ -5,15 +5,21 @@
  */
 package org.melsif.model;
 
+import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
+/**
+ *
+ * @author air
+ */
 @Data
 @Entity
 public class OrderQuestion {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Integer id;
     
     @ManyToOne(fetch = FetchType.LAZY)

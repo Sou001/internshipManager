@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
     <title>Login</title>
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" type = "text/css" href="http://localhost:8080/internshipManager/public/css/mystyle.css">
@@ -37,7 +39,10 @@
         </tr>
         <tr>
             <td>role :</td>
-            <td><input type="radio" name="Intern" />Intern<br><br><input type="radio" name="Admin" />Admin</td>
+            <td><input type="radio" name="role" value = "Intern"/>Intern
+                <br><br>
+                <input type="radio" name="role" value = "Admin"/>Admin
+            </td>
         </tr>
     </table> 
             <div class = "login" >
