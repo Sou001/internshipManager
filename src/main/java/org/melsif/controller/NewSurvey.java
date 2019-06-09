@@ -12,12 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.melsif.model.OrderResponse;
-import org.melsif.service.OrderResponseService;
-
-import org.melsif.model.OrderQuestion;
-import org.melsif.service.OrderQuestionService;
-
 import org.melsif.model.Survey;
 import org.melsif.service.SurveyService;
 
@@ -97,7 +91,6 @@ public class NewSurvey extends HttpServlet {
             survey.setIsActive(false);
         }
         survey.setTitle(title);
-        
         surveyService.newSurvey(survey);
         
         // on set les réponses et les questions --> faut QuestionService & ResponseService
@@ -107,8 +100,6 @@ public class NewSurvey extends HttpServlet {
        
         QuestionService questionService = new QuestionService();
         ResponseService responseService = new ResponseService();
-        OrderResponseService orderResponseService = new OrderResponseService();
-        OrderQuestionService orderQuestionService = new OrderQuestionService();
 
        
         // I've got to see the case if the user don't select a good response
@@ -133,28 +124,36 @@ public class NewSurvey extends HttpServlet {
                 //on set la dernière reponse a good si none has been selected
                 if (goodone != null && goodone.equals("good"+i+j)) {
                    good = reponse;
-                } else { 
-                    good = reponse;
                 }
                 
                 // set l ordre de la réponse dans la question
-                OrderResponse orderR = new OrderResponse();
-                orderR.setQuestion(question);
-                orderR.setResponse(reponse);
-                orderR.setOrdreR(j);
-                orderResponseService.newOrderResponse(orderR);
             }
-            
             question.setGood(good);
-            questionService.newQuestion(question);
             
-            //on set l ordre de la quesiton dans le survey
-            OrderQuestion orderQ = new OrderQuestion();
-            orderQ.setQuestion(question);
-            orderQ.setSurvey(survey);
-            orderQ.setOrdreQ(i);
-            orderQuestionService.newOrderQuestion(orderQ);
+            questionService.newQuestion(question);
         }
+        
+        Survey newSurvey = surveyService.getSurvey(title);
+        for(int i = 1; i <= nbquestion; i++) {
+            Question question = questionService.
+                    getQuesiton((String) request.getParameter("title"+i));
+            
+            ///
+            newSurvey.addQuestion(question,i);
+            //
+            for(int j = 1; j <= nbresponse; j++) {
+                // new response
+                Response reponse = responseService.
+                        getResponse((String) request.getParameter("response"+i+j));
+                question.addResponse(reponse,j);
+                responseService.mergeResponse(reponse);
+            }
+            surveyService.mergeSurvey(newSurvey);
+            questionService.mergeQuestion(question);
+            
+        }
+        
+        
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
     }
 

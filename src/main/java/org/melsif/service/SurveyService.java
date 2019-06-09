@@ -25,4 +25,8 @@ public class SurveyService {
     public void newSurvey(Survey survey) {
         SurveyDao.getInstance().persist(survey);
     }
+    
+    public Survey getSurvey(String title){
+        return SurveyDao.getInstance().getByTitle(title);
+    }
 }

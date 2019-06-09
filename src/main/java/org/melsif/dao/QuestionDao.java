@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
+import org.hibernate.Session;
 
 public class QuestionDao {
 
@@ -33,6 +34,13 @@ public class QuestionDao {
 
     public Question getById(Integer id) {
         return entityManager.find(Question.class, id);
+    }
+    
+    public Question getByTitle(String title) {
+        Session session = entityManager.unwrap( Session.class );
+        Question question = session.bySimpleNaturalId(Question.class)
+                .load( title );
+        return question;
     }
 
     public List<Question> findAll() {

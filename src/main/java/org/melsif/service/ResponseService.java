@@ -18,7 +18,15 @@ public class ResponseService {
         return ResponseDao.getInstance().findAll();
     }
     
+    public void mergeResponse(Response response) {
+        ResponseDao.getInstance().merge(response);
+    }
+    
     public void newResponse(Response response) {
         ResponseDao.getInstance().persist(response);
+    }
+    
+    public Response getResponse(String content){
+        return ResponseDao.getInstance().getByContent(content);
     }
 }

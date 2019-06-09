@@ -24,4 +24,8 @@ public class QuestionService {
     public void mergeQuestion(Question question) {
         QuestionDao.getInstance().merge(question);
     }
+    
+    public Question getQuesiton(String title){
+        return QuestionDao.getInstance().getByTitle(title);
+    }
 }
