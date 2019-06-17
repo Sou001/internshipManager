@@ -53,15 +53,37 @@ public class SurveyController extends HttpServlet {
             throws ServletException, IOException {
         SurveyService surveyService = new SurveyService();
         List<Survey> surveys = surveyService.getAllSurveys();
-        for (Survey survey : surveys) {
-             String active = request.getParameter(""+survey.getId()+"");
-             String isActive = survey.getIsActive().toString();
-             if (!active.equals(isActive)) {
-                 survey.setIsActive(!survey.getIsActive());
-                 surveyService.mergeSurvey(survey);
+        
+        System.out.println("IN HERE");
+        String id = request.getParameter("survey");
+        System.out.println("IN HERE");
+        System.out.println(id);
+        if (id!= null) {
+            /*surveys.stream().filter((survey) -> (survey.getId().toString() == id)).forEachOrdered((survey) -> {
+                System.out.println("IN HERE");
+                request.setAttribute("survet",survey);
+            });*/
+            for (Survey survey : surveys) {
+                String idString = survey.getId().toString();
+                if(idString == null ? id == null : idString.equals(id)) {
+                    request.setAttribute("survey",survey);
+                }
+                
+            }
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request,response);
+        } else {
+            
+            for (Survey survey : surveys) {
+                 String active = request.getParameter(""+survey.getId()+"");
+                 String isActive = survey.getIsActive().toString();
+                 if (!active.equals(isActive)) {
+                     survey.setIsActive(!survey.getIsActive());
+                     surveyService.mergeSurvey(survey);
+                 }
              }
-         }
-         this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
+        }
+        
     }
     
 }

@@ -95,6 +95,16 @@
         <url-pattern>/newSurvey</url-pattern>
     </servlet-mapping>
     
+    
+    <servlet>
+        <servlet-name>edit</servlet-name>
+        <servlet-class>org.melsif.controller.Edit</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>disconnect</servlet-name>
         <servlet-class>org.melsif.controller.Disconnect</servlet-class>

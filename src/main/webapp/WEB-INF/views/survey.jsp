@@ -29,6 +29,7 @@
                     <th>Titre</th>
                     <th>Compétence associée</th>
                     <th>active</th>
+                    <th>Modifier</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +45,7 @@
                          <input type="radio" name=${survey.id} value= ${inverse} />${inverse}
                         </td>
                         <td>
-                            <input type="submit" name = "modifySurvey" value = "Modifier">
+                        <input type="radio" name="survey" value = "${survey.id}"/>
                         </td>
                     </tr>
                 </c:forEach>
