@@ -17,4 +17,8 @@ public class UserService {
     public void mergeUser(User user) {
         UserDao.getInstance().merge(user);
     }
+    
+    public User getUserByEmail(String email) {
+        return UserDao.getInstance().getByEmail(email);
+    }
 }

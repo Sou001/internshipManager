@@ -106,6 +106,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>intern</servlet-name>
+        <servlet-class>org.melsif.controller.InternController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>intern</servlet-name>
+        <url-pattern>/intern</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>disconnect</servlet-name>
         <servlet-class>org.melsif.controller.Disconnect</servlet-class>
     </servlet>

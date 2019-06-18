@@ -44,7 +44,7 @@ public class LoginController extends HttpServlet {
                 
             } else {
                 request.getSession().setAttribute("role", "INTERN");
-                this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
+                this.getServletContext().getRequestDispatcher("/WEB-INF/views/intern.jsp").forward(request,response);
             }
         }
     }

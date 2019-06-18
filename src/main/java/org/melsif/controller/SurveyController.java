@@ -11,10 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.melsif.model.Administrator;
 import org.melsif.model.Skill;
 import org.melsif.model.Survey;
+import org.melsif.model.User;
 import org.melsif.service.SkillService;
 import org.melsif.service.SurveyService;
+import org.melsif.service.UserService;
 
 /**
  *
@@ -34,9 +37,22 @@ public class SurveyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String email = request.getParameter("action");
+        UserService userService = new UserService();
+        User user = userService.getUserByEmail(email);
+        request.setAttribute("user",user);
+        
+        
+        if (user instanceof Administrator) {
+            request.setAttribute("role", "administrator");
+        } else {
+            request.setAttribute("role", "intern");
+        }
+        
         SurveyService surveyService = new SurveyService();
         List<Survey> surveys = surveyService.getAllSurveys();
-        request.setAttribute("surveys", surveys);
+        request.setAttribute("surveys", surveys);     
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/survey.jsp").forward(request,response);
     }
 
@@ -55,8 +71,8 @@ public class SurveyController extends HttpServlet {
         List<Survey> surveys = surveyService.getAllSurveys();
         
         String id = request.getParameter("surveyId");
-        System.out.println("outhere");
-        System.out.println(id);
+        String internSurveyId = request.getParameter("internSurveyId");
+        
         if (id!= null) {
             
             for (Survey survey : surveys) {
@@ -71,6 +87,8 @@ public class SurveyController extends HttpServlet {
             List<Skill> skills = skillService.getAllSkills();
             request.setAttribute("skills", skills);
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request,response);
+        } else if (internSurveyId != null) {
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
         } else {
             
             for (Survey survey : surveys) {
