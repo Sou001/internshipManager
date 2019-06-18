@@ -12,10 +12,10 @@
   <meta http-equiv="pragma" content="no-cache" />
   <title>Surveys list</title>
   <link rel="shortcut icon" href="">
-  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 
-</head>
+ </head>
 <body>
   <header>
     <h1 style = "color : #009999">La liste des questionnaires ${role}</h1>

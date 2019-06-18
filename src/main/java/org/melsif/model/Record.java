@@ -6,6 +6,7 @@
 package org.melsif.model;
 
 import java.sql.Time;
+import java.util.Objects;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -13,21 +14,44 @@ import lombok.Data;
 @Entity
 public class Record {
     
-    @Id
-    @GeneratedValue
-    @Column(name = "id", updatable = false, nullable = false)
-    private Integer id;
+    @EmbeddedId
+    private RecordId id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("id")
+    @MapsId("survey")
     private Survey survey;
  
     @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("id")
+    @MapsId("intern")
     private Intern intern;
-    
     
     private Time duration;
     private Integer score;
     
+    
+    private Record() {}
+    public Record(Intern intern, Survey survey, Time duration, Integer score) {
+        this.survey = survey;
+        this.intern = intern;
+        this.duration = duration;
+        this.score = score;
+        this.id = new RecordId(intern.getEmail(), survey.getId());
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+ 
+        if (o == null || getClass() != o.getClass())
+            return false;
+ 
+        Record that = (Record) o;
+        return Objects.equals(survey, that.survey) &&
+               Objects.equals(intern, that.intern);
+    }
+ 
+    @Override
+    public int hashCode() {
+        return Objects.hash(intern, survey);
+    }
 }

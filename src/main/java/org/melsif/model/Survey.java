@@ -39,14 +39,12 @@ public class Survey {
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<Record> record = new ArrayList<>();
+    private List<Record> records = new ArrayList<>();
     
     
     
     public void addQuestion(Question question, Integer order) {
         OrderQuestion orderQuestion = new OrderQuestion(this, question, order);
-        System.out.println("back");
-        System.out.println(orderQuestion.getOrderQ());
         orderQuestions.add(orderQuestion);
         question.getOrderQuestions().add(orderQuestion);
     }
