@@ -6,14 +6,14 @@
 package org.melsif.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.melsif.model.Skill;
 import org.melsif.model.Survey;
+import org.melsif.service.SkillService;
 import org.melsif.service.SurveyService;
 
 /**
@@ -54,15 +54,11 @@ public class SurveyController extends HttpServlet {
         SurveyService surveyService = new SurveyService();
         List<Survey> surveys = surveyService.getAllSurveys();
         
-        System.out.println("IN HERE");
-        String id = request.getParameter("survey");
-        System.out.println("IN HERE");
+        String id = request.getParameter("surveyId");
+        System.out.println("outhere");
         System.out.println(id);
         if (id!= null) {
-            /*surveys.stream().filter((survey) -> (survey.getId().toString() == id)).forEachOrdered((survey) -> {
-                System.out.println("IN HERE");
-                request.setAttribute("survet",survey);
-            });*/
+            
             for (Survey survey : surveys) {
                 String idString = survey.getId().toString();
                 if(idString == null ? id == null : idString.equals(id)) {
@@ -70,6 +66,10 @@ public class SurveyController extends HttpServlet {
                 }
                 
             }
+            
+            SkillService skillService = new SkillService();
+            List<Skill> skills = skillService.getAllSkills();
+            request.setAttribute("skills", skills);
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request,response);
         } else {
             

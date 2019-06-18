@@ -15,7 +15,7 @@ public class Response {
     @GeneratedValue
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
-    @NaturalId
+    @NaturalId(mutable = true)
     private String content;
     private Boolean isActive;
     

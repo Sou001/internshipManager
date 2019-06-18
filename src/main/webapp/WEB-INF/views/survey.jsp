@@ -16,7 +16,7 @@
 
 </head>
 <body>
-    <header>
+  <header>
     <h1 style = "color : #009999">La liste des questionnaires </h1>
     <h4 style = "color : black; text-align:left;"> Afin d'activer ou désactiver un questionnaire il faut utiliser le bouton valider à la fin de votre opértation.</h4>
   </header>
@@ -45,7 +45,7 @@
                          <input type="radio" name=${survey.id} value= ${inverse} />${inverse}
                         </td>
                         <td>
-                        <input type="radio" name="survey" value = "${survey.id}"/>
+                        <input type="radio" name="surveyId" value = "${survey.id}"/>
                         </td>
                     </tr>
                 </c:forEach>

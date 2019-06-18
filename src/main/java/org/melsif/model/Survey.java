@@ -19,7 +19,8 @@ public class Survey {
     private Integer id;
     
     private Boolean isActive;
-    @NaturalId
+    
+    @NaturalId(mutable = true)
     private String title;
     
     @ManyToOne(fetch = FetchType.LAZY)

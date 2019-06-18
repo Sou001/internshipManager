@@ -33,6 +33,10 @@
                                 <option selected>${skill.subject}</option>
                             </c:if>
                                 
+                            <c:if test = "${empty survey.skill.subject}">
+                                <option selected></option>
+                            </c:if>
+                                
                             <c:if test = "${skill.subject != survey.skill.subject}">
                                 <option>${skill.subject}</option>
                             </c:if>
@@ -43,12 +47,12 @@
             <tr>
                 <td>Statut</td>
                 <td>
-                    <input type="radio" name="actif"  value = ${survey.isActive} checked/>${survey.isActive}
-                    <input type="radio" name="actif"  value = ${inverse}/>${inverse}
+                    <input type="radio" name="actif"  value = "actif" checked/>${survey.isActive}
+                    <input type="radio" name="actif"  value = "inactif" />${inverse}
                 </td>
             </tr>
 
-            
+            <input type="hidden" name="survey"  value = ${survey.id} checked/>
             </table>
        <input type="submit" value="Valider"/> 
         

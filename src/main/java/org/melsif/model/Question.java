@@ -22,7 +22,7 @@ public class Question {
     private Integer id;
     
     private Boolean isActive;
-    @NaturalId
+    @NaturalId(mutable = true)
     private String title;
     
     @OneToOne
