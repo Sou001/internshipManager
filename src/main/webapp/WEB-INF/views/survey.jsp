@@ -57,6 +57,7 @@
                         <c:if test = "${role == 'intern'}" >
                             <td>
                                 <input type="radio" name="internSurveyId" value = "${survey.id}"/>
+                                <input type="hidden" name="intern" value = "${user.email}"/>
                             </td>
                         </c:if>
                     </tr>

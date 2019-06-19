@@ -115,6 +115,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>record</servlet-name>
+        <servlet-class>org.melsif.controller.RecordController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>record</servlet-name>
+        <url-pattern>/record</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>disconnect</servlet-name>
         <servlet-class>org.melsif.controller.Disconnect</servlet-class>
     </servlet>

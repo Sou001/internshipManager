@@ -6,6 +6,7 @@
 package org.melsif.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -88,7 +89,20 @@ public class SurveyController extends HttpServlet {
             request.setAttribute("skills", skills);
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(request,response);
         } else if (internSurveyId != null) {
-            this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
+            //Get survey's details
+            Survey survey = surveys.stream()
+                .filter(sk -> internSurveyId.equals(sk.getId().toString()))
+                .findAny()
+                .orElse(null);
+            request.setAttribute("survey",survey);
+            
+            String email = request.getParameter("intern");
+            UserService userService = new UserService();
+            User user = userService.getUserByEmail(email);
+            
+            request.setAttribute("user",user);
+            request.setAttribute("timer",LocalDateTime.now());
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/record.jsp").forward(request,response);
         } else {
             
             for (Survey survey : surveys) {
