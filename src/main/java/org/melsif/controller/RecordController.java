@@ -6,12 +6,26 @@
 package org.melsif.controller;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.melsif.model.Administrator;
+import org.melsif.model.Intern;
 import org.melsif.model.OrderQuestion;
 import org.melsif.model.OrderResponse;
 import org.melsif.model.Question;
@@ -38,7 +52,8 @@ public class RecordController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException { 
+            throws ServletException, IOException {
+        System.out.println("IN HERE");
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/record.jsp").forward(request,response);
     }
 
@@ -55,37 +70,61 @@ public class RecordController extends HttpServlet {
             throws ServletException, IOException {
         
         
-        SurveyService surveyService = new SurveyService();
-        List<Survey> surveys = surveyService.getAllSurveys();
-        
-        User user = (User) request.getSession().getAttribute("user");
-        
-        Survey survey = surveys.stream()
-                .filter(sk -> request.getParameter("survey").equals(sk.getId().toString()))
-                .findAny()
-                .orElse(null);
-        
-        request.setAttribute("survey",survey);
-        request.setAttribute("user",user);
-        int score = 0;
-        
-        System.out.println("IN HERE");
-        for (OrderQuestion orderQuestion : survey.getOrderQuestions()) {
-            System.out.println("START");
-            Response good = orderQuestion.getQuestion().getGood();
-            System.out.println(good.getContent());
-            Integer orderQ = orderQuestion.getOrderQ();
-            for (OrderResponse orderResponse : orderQuestion.getQuestion().getOrderResponses()) {
-                String order = (String) request.getAttribute("resp"+orderQ);
-                System.out.println(order);
-                if(order!=null && order.equals(orderQ.toString()+orderResponse.getOrderR().toString()) &&
-                        orderResponse.getResponse().getContent().equals(good.getContent())){
-                    score++;
+            SurveyService surveyService = new SurveyService();
+            List<Survey> surveys = surveyService.getAllSurveys();
+            
+            Intern intern = (Intern) request.getSession().getAttribute("user");
+            
+            Survey survey = surveys.stream()
+                    .filter(sk -> request.getParameter("survey").equals(sk.getId().toString()))
+                    .findAny()
+                    .orElse(null);
+            
+            int score = 0;
+            
+            for (OrderQuestion orderQuestion : survey.getOrderQuestions()) {
+                Response good = orderQuestion.getQuestion().getGood();
+                Integer orderQ = orderQuestion.getOrderQ();
+                for (OrderResponse orderResponse : orderQuestion.getQuestion().getOrderResponses()) {
+                    String order = (String) request.getParameter(""+orderQ);
+                    if(order!=null && order.equals(orderQ.toString()+orderResponse.getOrderR().toString()) &&
+                            orderResponse.getResponse().getContent().equals(good.getContent())){
+                        score++;
+                    }
                 }
             }
-        }
-        request.setAttribute("score",score);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request,response);
+            
+            String time = (String) request.getParameter("time");
+            
+            DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+            Date date = new Date();
+            Date date2;
+            try {
+                date2 = dateFormat.parse(time);
+                request.setAttribute("time",date2);
+                
+                
+                long diff = date.getTime() - date2.getTime();
+                
+                diff/=1000;
+                Long diffSeconds = diff % 60;
+                diff/=60;
+                Long diffMinutes = diff % 60;
+                diff/=60;
+                Long diffHours = diff%1;
+                
+                String duration = ""+ diffHours + "h"+diffMinutes+"mn"+diffSeconds+"s";
+                intern.addSurvey(survey,duration,score);
+                
+                UserService userService = new UserService();
+                userService.mergeUser(intern);
+                surveyService.mergeSurvey(survey);
+                
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/intern.jsp").forward(request,response);
     }
     
 }

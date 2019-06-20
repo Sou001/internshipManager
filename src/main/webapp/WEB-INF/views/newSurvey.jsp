@@ -27,6 +27,7 @@
                 <td>Compétence</td>
                 <td>
                     <select name = "skill" >
+                        <option>Aucune</option>
                         <c:forEach items="${ skills }" var="skill">
                         <option>${skill.subject}</option>
                         </c:forEach>

@@ -23,7 +23,7 @@ public class Intern extends User {
     )
     private List<Record> records = new ArrayList<>();
     
-    public void addSurvey(Survey survey, Time duration, Integer score) {
+    public void addSurvey(Survey survey, String duration, Integer score) {
         Record record = new Record(this, survey, duration,score);
 
         records.add(record);
@@ -38,7 +38,7 @@ public class Intern extends User {
             if (record.getIntern().equals(this) &&
                     record.getIntern().equals(survey)) {
                 iterator.remove();
-                record.getSurvey().getOrderQuestions().remove(record);
+                record.getSurvey().getRecords().remove(record);
                 record.setSurvey(null);
                 record.setSurvey(null);
             }

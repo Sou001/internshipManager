@@ -25,12 +25,12 @@ public class Record {
     @MapsId("intern")
     private Intern intern;
     
-    private Time duration;
+    private String duration;
     private Integer score;
     
     
     private Record() {}
-    public Record(Intern intern, Survey survey, Time duration, Integer score) {
+    public Record(Intern intern, Survey survey, String duration, Integer score) {
         this.survey = survey;
         this.intern = intern;
         this.duration = duration;

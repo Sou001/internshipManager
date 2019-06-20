@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <html>
     <head>
     <meta charset="utf-8">
@@ -23,32 +25,38 @@
     <form action="record" method="post">
         <input type="hidden" name="survey" value=${survey.id}  />
         <input type="hidden" name="user" value=${user.email}  />
-        <input type="hidden" name="timer" value=${timer}  />
-            <table>
-                <header style="padding-bottom: 20px;">
-            <h2> ${user.name}, vous êtes en train de remplir le questionnaire ${survey.title} </h2>
+        
+        <c:set var = "today" value = "<%=new java.util.Date()%>" />
+        
+        
+        
+        <table>
+            <header style="padding-bottom: 20px;">
+                <h4 style="color: #009999;text-align: center;"> ${user.name}, vous êtes en train de remplir le questionnaire ${survey.title} </h4>
+            </header>
             
-         </header>
+            <p style="text-align: right;">Heure de début :
+                <input type="hidden" name="time" value="<fmt:formatDate type="time" value="${today}" />"/>
+                <strong><fmt:formatDate type="time" value="${today}" /></strong>
+            </p>
             
             <c:forEach items="${survey.orderQuestions}" var="orderQuestion">
                 <tr>
                     <td>${orderQuestion.orderQ} - ${orderQuestion.question.title}</td>
-                    
                 </tr>
                 <tr>
                 <c:forEach items="${orderQuestion.question.orderResponses}" var="orderResponse">
                         <td style="padding-left: 20px;">
                             <div style="display:flex">
-                                <input type="radio" name="resp${orderQuestion.orderQ}" value = "${orderQuestion.orderQ}${orderResponse.orderR}"/>
+                                <input type="radio" name="${orderQuestion.orderQ}" value=${orderQuestion.orderQ}${orderResponse.orderR} />
                                 <p>${orderResponse.response.content}</p>
-                            </div>
-                            
+                            </div> 
                         </td>
                 </c:forEach>
                 </tr>
             </c:forEach>
             
-            </table>
+        </table>
        <input type="submit" value="Valider"/> 
         
     </form>

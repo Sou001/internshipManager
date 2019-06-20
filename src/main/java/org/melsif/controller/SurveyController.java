@@ -101,7 +101,7 @@ public class SurveyController extends HttpServlet {
             User user = userService.getUserByEmail(email);
             
             request.setAttribute("user",user);
-            request.setAttribute("timer",LocalDateTime.now());
+            
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/record.jsp").forward(request,response);
         } else {
             
