@@ -28,9 +28,9 @@
           	<input type="hidden" name="action" value="${user.email}">
           	<button>Questionnaires</button>
         </form>
-        <form action = "newUser" method="get" >
+        <form action = "history" method="get" >
           	<input type="hidden" name="action" value="${user.email}">
-          	<button>Historiques de parcours</button>
+          	<button>Historiques de vos parcours</button>
         </form>  
         <form action = "disconnect" method="get" >
           	<input type="hidden" name="action" value="${user.email}">

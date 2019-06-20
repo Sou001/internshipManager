@@ -31,12 +31,12 @@ public class RecordDao {
         return instance;
     }
 
-    public RecordDao getById(Integer id) {
-        return entityManager.find(RecordDao.class, id);
+    public Record getById(Integer id) {
+        return entityManager.find(Record.class, id);
     }
 
-    public List<RecordDao> findAll() {
-        return entityManager.createQuery("FROM " + RecordDao.class.getName()).getResultList();
+    public List<Record> findAll() {
+        return entityManager.createQuery("FROM " + Record.class.getName()).getResultList();
     }
 
     public void persist(Record record) {
@@ -73,12 +73,12 @@ public class RecordDao {
         }
     }
 
-    /*public void removeById(Integer id) {
+    public void removeById(Integer id) {
         try {
             Record record = getById(id);
             remove(record);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }*/
+    }
 }

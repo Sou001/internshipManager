@@ -124,6 +124,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>history</servlet-name>
+        <servlet-class>org.melsif.controller.HistoryController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>history</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>disconnect</servlet-name>
         <servlet-class>org.melsif.controller.Disconnect</servlet-class>
     </servlet>

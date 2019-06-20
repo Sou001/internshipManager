@@ -11,8 +11,7 @@
   <meta charset="utf-8">
   <meta http-equiv="pragma" content="no-cache" />
   <title>Surveys list</title>
-  <link rel="shortcut icon" href="">
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
   <link rel="stylesheet" type="text/css" href=http://localhost:8080/internshipManager/public/css/mystyle.css>
 
  </head>
@@ -27,7 +26,7 @@
   </header>
     <form class ="users" action="survey" method="post">
         <c:if test = "${!empty surveys}" >
-        <table class = "users" style="width: 100%">
+        <table style="width: 100%">
             <thead>
                 <tr>
                     <th>Numéro</th>

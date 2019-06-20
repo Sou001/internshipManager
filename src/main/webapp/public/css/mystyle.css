@@ -13,7 +13,7 @@ h1
     
         border: 1px solid black;
         text-transform: capitalize;
-        border-collapse: collapse;
+        /*border-collapse: collapse;*/
         top : 10px;
      
 }
@@ -23,10 +23,12 @@ h1
         text-transform: capitalize;
         border-collapse: collapse;
         top : 10px;
-     
+        text-align: center;
 }
+     
+
 .users td {
-    
+        text-align:center;
         border: 1px solid black;
         text-transform: capitalize;
         border-collapse: collapse;
