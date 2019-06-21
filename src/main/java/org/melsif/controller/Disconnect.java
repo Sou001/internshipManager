@@ -31,6 +31,7 @@ public class Disconnect extends HttpServlet {
          /* Redirection vers le Site du Zéro ! */
 
          this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
+         //response.sendRedirect("login.jsp");
     }
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
