@@ -8,6 +8,7 @@ package org.melsif.controller;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,15 +45,20 @@ public class SurveyController extends HttpServlet {
         User user = userService.getUserByEmail(email);
         request.setAttribute("user",user);
         
+        SurveyService surveyService = new SurveyService();
+        List<Survey> surveys = surveyService.getAllSurveys();
+        
         
         if (user instanceof Administrator) {
             request.setAttribute("role", "administrator");
         } else {
             request.setAttribute("role", "intern");
+            surveys = surveys.stream()
+                    .filter(p -> p.getIsActive())
+                    .collect(Collectors.toList());
         }
         
-        SurveyService surveyService = new SurveyService();
-        List<Survey> surveys = surveyService.getAllSurveys();
+        
         request.setAttribute("surveys", surveys);     
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/survey.jsp").forward(request,response);
     }
@@ -73,6 +79,7 @@ public class SurveyController extends HttpServlet {
         
         String id = request.getParameter("surveyId");
         String internSurveyId = request.getParameter("internSurveyId");
+        String email = request.getParameter("intern");
         
         if (id!= null) {
             
@@ -96,13 +103,15 @@ public class SurveyController extends HttpServlet {
                 .orElse(null);
             request.setAttribute("survey",survey);
             
-            String email = request.getParameter("intern");
+            
             UserService userService = new UserService();
             User user = userService.getUserByEmail(email);
             
             request.setAttribute("user",user);
             
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/record.jsp").forward(request,response);
+        } else if (email != null) {
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/intern.jsp").forward(request,response);
         } else {
             
             for (Survey survey : surveys) {

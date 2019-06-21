@@ -8,6 +8,7 @@ package org.melsif.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,9 +28,9 @@ public class Disconnect extends HttpServlet {
         HttpSession session = request.getSession();
         session.invalidate();
 
-        /* Redirection vers le Site du Zéro ! */
-        
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
+         /* Redirection vers le Site du Zéro ! */
+
+         this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
     }
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

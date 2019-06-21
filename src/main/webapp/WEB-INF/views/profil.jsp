@@ -19,7 +19,7 @@
   </header>
    
   <main>
-  <table class  = "users" style="width: 100%">
+  <table class  = "users" style="width: 100%;margin-top: 6%;">
             
             <thead>
                 <tr>
@@ -45,6 +45,10 @@
             
             </tbody>
 </table>
+                <form action = "profil" method = "post">
+                    <input type="hidden" name = "email" value=<%= request.getSession().getAttribute("email") %> />
+                    <input class = "admin" type="submit" value="Page précédente"/>
+                </form>
  
   </main>
 </body>

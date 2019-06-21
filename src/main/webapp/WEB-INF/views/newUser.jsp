@@ -46,7 +46,7 @@
         </tr>
     </table> 
             <div class = "login" >
-                <input type="submit" value="NewUser" />  
+                <input type="submit" value="Valider" />  
                
             </div>
        </form>

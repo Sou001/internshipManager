@@ -21,12 +21,14 @@
     <h1 style = "color : #009999">Historique de vos parcours</h1>
 
   </header>
-    <form class ="users" action="history" method="post">
+    <form class ="users" action="history" method="post" style="margin-top: 5%;">
         <c:if test = "${!empty records}" >
+            <p>Votre score est sous forme : nombre total de bonnes réponses / nombre total de questions</p>
         <table class = "users" style="width: 100%">
             <thead>
                 <tr>
                     <th>Titre du questionnaire</th>
+                    <th>Compétence testée</th>
                     <th>Score</th>
                     <th>Durée</th>
                 </tr>
@@ -35,6 +37,7 @@
                 <c:forEach items="${ records }" var="record">
                     <tr>
                         <td>${ record.survey.title }</td>
+                        <td>${ record.survey.skill.subject }</td>
                         <td>${ record.score }/${record.survey.orderQuestions.size()}</td>
                         <td>${ record.duration }</td>
                     </tr>
@@ -46,6 +49,8 @@
         <c:if test = "${empty records}" >
             <p> Vous n'avez pas d'historiques car vous n'avez complété aucun questionnaire !</p>
         </c:if>
+            
+        <input type="submit" value="Page précédente" style="width: 10%;margin-top: 3%;"/>
     </form>
 
 </body>

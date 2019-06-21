@@ -36,15 +36,17 @@ public class LoginController extends HttpServlet {
             request.getSession().setAttribute("society", user.getSociety());
             request.getSession().setAttribute("tel", user.getTel());
             request.getSession().setAttribute("date", user.getCreationDate());
-            request.getSession().setAttribute("state", user.getIsActive());
+            request.getSession().setAttribute("state", user.getIsActive() ? "Actif" : "Inactif");
             
             if (user instanceof Administrator) {
                 request.getSession().setAttribute("role", "ADMINISTRATOR");
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(request,response);
                 
-            } else {
+            } else if (user.getIsActive()) {
                 request.getSession().setAttribute("role", "INTERN");
                 this.getServletContext().getRequestDispatcher("/WEB-INF/views/intern.jsp").forward(request,response);
+            } else {
+                this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
             }
         }
     }

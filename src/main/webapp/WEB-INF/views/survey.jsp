@@ -17,7 +17,7 @@
  </head>
 <body>
   <header>
-    <h1 style = "color : #009999">La liste des questionnaires ${role}</h1>
+    <h1 style = "color : #009999">La liste des questionnaires</h1>
     
     <c:if test = "${role == 'administrator'}" >
         <h4 style = "color : black; text-align:left;"> Afin d'activer ou désactiver un questionnaire il faut utiliser le bouton valider à la fin de votre opértation.</h4>
@@ -32,8 +32,14 @@
                     <th>Numéro</th>
                     <th>Titre</th>
                     <th>Compétence associée</th>
-                    <th>active</th>
-                    <th>Modifier</th>
+                    
+                    <c:if test = "${role == 'administrator'}" >
+                        <th>active</th>
+                        <th>Modifier</th>
+                    </c:if>
+                    <c:if test = "${role == 'intern'}" >
+                        <th>Remplir</th>
+                    </c:if>
                 </tr>
             </thead>
             <tbody>
@@ -43,12 +49,13 @@
                         <td>${ survey.id }</td>
                         <td>${ survey.title }</td>
                         <td>${ survey.skill.subject }</td>
-                        <td>
-                         <input type="radio" name=${survey.id}  value= ${survey.isActive} checked/>${survey.isActive}
-                         <br><br>
-                         <input type="radio" name=${survey.id} value= ${inverse} />${inverse}
-                        </td>
+                        
                         <c:if test = "${role == 'administrator'}" >
+                            <td>
+                                <input type="radio" name=${survey.id}  value= ${survey.isActive} checked/>${survey.isActive}
+                                <br><br>
+                                <input type="radio" name=${survey.id} value= ${inverse} />${inverse}
+                           </td>
                             <td>
                                 <input type="radio" name="surveyId" value = "${survey.id}"/>
                             </td>
