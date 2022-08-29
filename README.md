@@ -1,2 +1,3 @@
 # internshipEvaluation
-## Java webapp to evaluate interns
+## Java app developped in Java in the purpose of allowing internship managers to evaluate interns
+
